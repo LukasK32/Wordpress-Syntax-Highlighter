@@ -46,7 +46,15 @@ add_action( 'init', __NAMESPACE__.'\registerSettings');
 add_action( 'admin_menu', __NAMESPACE__.'\registerAdminPage' );
 add_action( 'admin_enqueue_scripts', __NAMESPACE__.'\registerAdminPageScripts' );
 add_action( 'wp_enqueue_scripts', __NAMESPACE__.'\registerFrontend' );
+
+//Gutenberg
 add_action( 'enqueue_block_editor_assets', __NAMESPACE__.'\registerGutenbergPlugin' );
+
+//TinyMCE
+add_filter( 'mce_css', __NAMESPACE__.'\registerTinymceTheme' );
+add_filter( 'mce_buttons', __NAMESPACE__.'\registerTinymceToolbarButton' );
+add_filter(	'mce_external_plugins', __NAMESPACE__.'\registerTinymcePlugin' );
+add_filter( 'tiny_mce_before_init', __NAMESPACE__.'\registerTinymceSettings' );
 
 
 /*
@@ -241,6 +249,7 @@ function registerFrontend(){
     }*/
 }
 
+//Gutenberg extension
 function registerGutenbergPlugin(){
     $activeLanguages = settingsManager::getInstance()->getSetting('languages');
     $languages = prismManager::getAvailableLanguages();
@@ -270,4 +279,49 @@ function registerGutenbergPlugin(){
         '1.0.0'
     );
 
+}
+
+//TinyMCE extension
+function registerTinymceTheme( $stylesheets ){
+
+    if ( ! empty( $stylesheets ) )
+		$stylesheets .= ',';
+
+    $stylesheets .= plugins_url('assets/tinyMCE.css', __FILE__);
+
+    return $stylesheets;
+}
+
+function registerTinymceToolbarButton( $toolbar_buttons ){
+    
+    array_push( $toolbar_buttons, 'separator', 'pmd_syntax_highlighter' );
+
+    return $toolbar_buttons;
+}
+
+function registerTinymcePlugin( $mce_plugins ){
+
+    $mce_plugins['pmd_syntax_highlighter'] = plugins_url( 'assets/js/tinyMCE.js', __FILE__ );
+
+    return $mce_plugins;
+}
+
+function registerTinymceSettings( $mce_settings ){
+
+    $activeLanguages = settingsManager::getInstance()->getSetting('languages');
+    $languages = prismManager::getAvailableLanguages();
+
+    $output = "[ { text: 'Don\'t use syntax highlighting.', value: '' },";
+
+    foreach($activeLanguages as $lang){
+
+        $output .= "{ text: '".$languages[$lang]['title']."', value: '$lang' },";
+
+    }
+
+    $output .= ']';
+
+    $mce_settings['pmd_syntax_highlighter_languages'] = $output;
+
+    return $mce_settings;
 }
