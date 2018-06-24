@@ -82,7 +82,7 @@ addFilter(
 );
 
 addFilter(
-    'blocks.BlockEdit',
+    'editor.BlockEdit',
     'pomelodev-syntax-superTemporary',
     addLanguageSwitcherToCodeBlock
 );
