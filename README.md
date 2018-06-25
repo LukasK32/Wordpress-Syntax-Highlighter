@@ -1,6 +1,6 @@
 # Syntax Highlighter for Wordpress
 
-![Frontend](https://raw.githubusercontent.com/LukasK32/Wordpress-Syntax-Highlighter/master/screenshot-1.png)
+![Frontend](https://raw.githubusercontent.com/LukasK32/Wordpress-Syntax-Highlighter/master/src/extras/screenshot-1.png)
 
 Syntax Highlighter is a Wordpress plugin allowing you to beautifully highlight code snippets embedded to your posts and pages. Works with Gutenberg and TinyMCE.
 
@@ -35,8 +35,8 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Screenshots
 
-![Frontend](https://raw.githubusercontent.com/LukasK32/Wordpress-Syntax-Highlighter/master/screenshot-1.png)
-![Gutenberg](https://raw.githubusercontent.com/LukasK32/Wordpress-Syntax-Highlighter/master/screenshot-2.png)
-![TinyMCE](https://raw.githubusercontent.com/LukasK32/Wordpress-Syntax-Highlighter/master/screenshot-3.png)
-![Themes](https://raw.githubusercontent.com/LukasK32/Wordpress-Syntax-Highlighter/master/screenshot-4.png)
-![Languages](https://raw.githubusercontent.com/LukasK32/Wordpress-Syntax-Highlighter/master/screenshot-5.png)
+![Frontend](https://raw.githubusercontent.com/LukasK32/Wordpress-Syntax-Highlighter/master/src/extras/screenshot-1.png)
+![Gutenberg](https://raw.githubusercontent.com/LukasK32/Wordpress-Syntax-Highlighter/master/src/extras/screenshot-2.png)
+![TinyMCE](https://raw.githubusercontent.com/LukasK32/Wordpress-Syntax-Highlighter/master/src/extras/screenshot-3.png)
+![Themes](https://raw.githubusercontent.com/LukasK32/Wordpress-Syntax-Highlighter/master/src/extras/screenshot-4.png)
+![Languages](https://raw.githubusercontent.com/LukasK32/Wordpress-Syntax-Highlighter/master/src/extras/screenshot-5.png)
