@@ -4,7 +4,7 @@ Tags: gutenberg,syntax,code,highlighter,pomelodev
 Requires at least: 4.9.6
 Tested up to: 4.9.6
 License: MIT
-License URI: https://raw.githubusercontent.com/LukasK32/Wordpress-Syntax-Highlighter/master/LICENSE
+License URI: https://raw.githubusercontent.com/LukasK32/Wordpress-Syntax-Highlighter/master/LICENSE.md
 
 Syntax Highlighter is a Wordpress plugin allowing you to beautifully highlight code snippets embedded to your posts and pages.
 
