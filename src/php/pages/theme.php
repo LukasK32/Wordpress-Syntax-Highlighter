@@ -16,7 +16,7 @@ if(
 
         if($slug === $_POST['prism-theme'])
         {
-            settingsManager::setSetting('theme', $slug, false);
+            settingsManager::getInstance()->setSetting('theme', $slug, false);
             $currentTheme = $slug;
             ?>
             <div class="notice notice-success is-dismissible">
