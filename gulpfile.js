@@ -44,6 +44,11 @@ gulp.task('extras', function(){
                .pipe(gulp.dest('./dist/'));
 });
 
+gulp.task('extras', function(){
+    return gulp.src('./src/languages/**')
+               .pipe(gulp.dest('./dist/languages/'));
+});
+
 
 /*
 |--------------------------------------------

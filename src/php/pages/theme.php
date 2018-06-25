@@ -20,7 +20,7 @@ if(
             $currentTheme = $slug;
             ?>
             <div class="notice notice-success is-dismissible">
-                <p><?php echo translate('Theme saved!'); ?></p>
+                <p><?php _e( 'Theme saved!', 'pomelodev_syntax_highlighter' ); ?></p>
             </div>
             <?php
             break;
@@ -34,7 +34,7 @@ if(
     <?php adminPageManager::pageHelper()->echoNonceField('changeTheme'); ?>
 
 <fieldset>
-    <legend class="screen-reader-text"><span><?php echo translate('Theme'); ?></span></legend>
+    <legend class="screen-reader-text"><span><?php _e( 'Theme', 'pomelodev_syntax_highlighter' ); ?></span></legend>
 
     <?php
     
@@ -63,5 +63,5 @@ if(
     <?php submit_button(); ?>
 </form>
 
-<h2><?php echo translate('Example'); ?></h2>
+<h2><?php _e( 'Example', 'pomelodev_syntax_highlighter' ); ?></h2>
 <?php include(__DIR__.'/../assets/example.html'); ?>

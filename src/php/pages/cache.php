@@ -21,7 +21,7 @@ if(
     <?php adminPageManager::pageHelper()->echoNonceField('updateCache'); ?>
     <?php
         submit_button(
-            translate('Update cache')
+            __( 'Update cache', 'pomelodev_syntax_highlighter' )
         );
     ?>
 </form>

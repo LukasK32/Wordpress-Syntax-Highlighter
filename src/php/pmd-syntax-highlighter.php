@@ -42,10 +42,14 @@ if ( !defined( 'ABSPATH' ) || !function_exists( 'add_action' ) ) exit;
 |   Hooks
 |--------------------------------------------
 */
+add_action('plugins_loaded', __NAMESPACE__.'\load_textdomain');
+
 add_action( 'init', __NAMESPACE__.'\registerSettings');
 add_action( 'admin_menu', __NAMESPACE__.'\registerAdminPage' );
+
 add_action( 'admin_enqueue_scripts', __NAMESPACE__.'\registerAdminPageScripts' );
 add_action( 'wp_enqueue_scripts', __NAMESPACE__.'\registerFrontend' );
+
 add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), __NAMESPACE__.'\registerActionLinks' );
 
 //Gutenberg
@@ -56,16 +60,6 @@ add_filter( 'mce_css', __NAMESPACE__.'\registerTinymceTheme' );
 add_filter( 'mce_buttons', __NAMESPACE__.'\registerTinymceToolbarButton' );
 add_filter(	'mce_external_plugins', __NAMESPACE__.'\registerTinymcePlugin' );
 add_filter( 'tiny_mce_before_init', __NAMESPACE__.'\registerTinymceSettings' );
-
-
-/*
-|--------------------------------------------
-|   Helpers
-|--------------------------------------------
-*/
-function translate($text){
-    return __($text, 'pomelodev_syntax_highlighter');
-}
 
 
 /*
@@ -87,6 +81,11 @@ spl_autoload_register(function( $class ){
 |   Functions
 |--------------------------------------------
 */
+function load_textdomain(){
+    $plugin_rel_path = basename( dirname( __FILE__ ) ) . '/languages';
+    load_plugin_textdomain( 'pomelodev_syntax_highlighter', false, $plugin_rel_path );
+}
+
 function registerSettings(){
 
     //Pism's theme
@@ -110,16 +109,28 @@ function registerAdminPage(){
 
     adminPageManager::$baseUrl = 'options-general.php?page=syntax-highlighter';
     
-    adminPageManager::registerTab(translate('Theme'), 'theme');
-    adminPageManager::registerTab(translate('Languages'), 'languages');
+    adminPageManager::registerTab(
+        __( 'Theme', 'pomelodev_syntax_highlighter' ),
+        'theme'
+    );
+
+    adminPageManager::registerTab(
+        __( 'Languages', 'pomelodev_syntax_highlighter' ),
+        'languages'
+    );
+
     //adminPageManager::registerTab(translate('Plugins'), 'plugins');
     //adminPageManager::registerTab(translate('Cache'), 'cache');
-    adminPageManager::registerTab(translate('About'), 'about');
+    
+    adminPageManager::registerTab(
+        __( 'About', 'pomelodev_syntax_highlighter' ),
+        'about'
+    );
 
     add_submenu_page(
         'options-general.php',
-        translate('Syntax highlighter'),
-        translate('Syntax highlighter'),
+        __( 'Syntax highlighter', 'pomelodev_syntax_highlighter' ),
+        __( 'Syntax highlighter', 'pomelodev_syntax_highlighter' ),
         'administrator',
         'syntax-highlighter',
         array(
@@ -134,7 +145,7 @@ function registerActionLinks( $links ){
 
     $newLinks = [];
 
-    $newLinks[] = '<a href="'.admin_url(adminPageManager::$baseUrl).'">'.translate('Settings').'</a>';
+    $newLinks[] = '<a href="'.admin_url(adminPageManager::$baseUrl).'">'.__( 'Settings', 'pomelodev_syntax_highlighter' ).'</a>';
 
     return array_merge( $links, $newLinks );
 }

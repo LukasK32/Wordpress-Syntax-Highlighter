@@ -15,11 +15,13 @@ class adminPageManager {
 
     public static function render(){
         if(!current_user_can('administrator'))
-            wp_die( translate( 'You do not have sufficient permissions to access this page.' ) );
+            wp_die( 
+                __( 'You do not have sufficient permissions to access this page.', 'pomelodev_syntax_highlighter')
+            );
         ?>
 
         <div class="wrap">
-            <h1><?php echo translate('Syntax highlighter'); ?></h1>
+            <h1><?php _e( 'Syntax highlighter', 'pomelodev_syntax_highlighter'); ?></h1>
 
             <?php
             $tab = array_keys(self::$tabs)[0];
@@ -47,13 +49,13 @@ class adminPageManager {
                     include(__DIR__.'/../pages/'.$tab.'.php');
                 }
                 else
-                    echo translate('Page not found.');
+                    _e( 'Page not found.', 'pomelodev_syntax_highlighter' );
 
                 if(cacheManager::getInstance()->isCacheOutdated()):
                     ?>
                     <div class="notice notice-warning">
                         <p><?php echo sprintf(
-                            translate('Your cache is outdated! You can rebuild it <a href="%s">here</a>.'),
+                            __( 'Your cache is outdated! You can rebuild it <a href="%s">here</a>.', 'pomelodev_syntax_highlighter' ),
                             self::$baseUrl.'&tab=cache'
                         ); ?></p>
                     </div>
