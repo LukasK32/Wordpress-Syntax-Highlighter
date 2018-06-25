@@ -46,6 +46,7 @@ add_action( 'init', __NAMESPACE__.'\registerSettings');
 add_action( 'admin_menu', __NAMESPACE__.'\registerAdminPage' );
 add_action( 'admin_enqueue_scripts', __NAMESPACE__.'\registerAdminPageScripts' );
 add_action( 'wp_enqueue_scripts', __NAMESPACE__.'\registerFrontend' );
+add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), __NAMESPACE__.'\registerActionLinks' );
 
 //Gutenberg
 add_action( 'enqueue_block_editor_assets', __NAMESPACE__.'\registerGutenbergPlugin' );
@@ -127,6 +128,15 @@ function registerAdminPage(){
         )
     );
 
+}
+
+function registerActionLinks( $links ){
+
+    $newLinks = [];
+
+    $newLinks[] = '<a href="'.admin_url(adminPageManager::$baseUrl).'">'.translate('Settings').'</a>';
+
+    return array_merge( $links, $newLinks );
 }
 
 function registerAdminPageScripts($hook){
