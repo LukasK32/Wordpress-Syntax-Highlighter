@@ -4,6 +4,7 @@ const babel = require('gulp-babel');
 
 const prism_repository = './node_modules/prismjs/';
 
+
 /*
 |--------------------------------------------
 |   Clears build
@@ -86,26 +87,6 @@ gulp.task('prism:copy', gulp.series(
 
 /*
 |--------------------------------------------
-|   Wordpress related stuff
-|--------------------------------------------
-*/
-gulp.task('wordpress:copy', function(){
-    return gulp.src('./dist/**')
-               .pipe(gulp.dest('../plugins/pmd-syntax-highlighter/'))
-});
-
-gulp.task('wordpress:clear', function(){
-    return del([
-        '../plugins/pmd-syntax-highlighter/**'
-    ],
-    {
-        force: true
-    });
-});
-
-
-/*
-|--------------------------------------------
 |   Build tasks
 |--------------------------------------------
 */
@@ -118,12 +99,6 @@ gulp.task('build', gulp.series(
     'extras'
 ));
 
-gulp.task('build:wordpress', gulp.series(
-    'build',
-    'wordpress:clear',
-    'wordpress:copy'
-));
-
 
 /*
 |--------------------------------------------
@@ -132,10 +107,6 @@ gulp.task('build:wordpress', gulp.series(
 */
 gulp.task('watch', function(){
     gulp.watch('./src/**', gulp.series('build'));
-});
-
-gulp.task('watch:wordpress', function(){
-    gulp.watch('./src/**', gulp.series('build:wordpress'));
 });
 
 
