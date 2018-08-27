@@ -89,7 +89,7 @@ function load_textdomain(){
 function registerSettings(){
 
     //Pism's theme
-    settingsManager::getInstance()->registerSetting('theme', 'prism.css');
+    settingsManager::getInstance()->registerSetting('theme', 'prism');
 
     //Pism's languages
     if(is_admin())
