@@ -2,9 +2,9 @@
 /*
 Plugin Name: Syntax highlighter
 Plugin URI: https://github.com/LukasK32/Wordpress-Syntax-Highlighter
-Description: TODO
-Author: Pomelodev
-Version: 1.0
+Description: Syntax Highlighter is a Wordpress plugin allowing you to beautifully highlight code snippets embedded to your posts and pages.
+Author: PomeloDev
+Version: 1.0.0
 Author URI: https://pomelodev.pl
 License: MIT
 Text Domain: pomelodev_syntax_highlighter
