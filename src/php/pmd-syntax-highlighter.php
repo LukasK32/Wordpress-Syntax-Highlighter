@@ -95,7 +95,7 @@ function registerSettings(){
     if(is_admin())
         settingsManager::getInstance()->registerSetting('languages', prismManager::getDefaultLanguages());
     else
-        settingsManager::getInstance()->registerSetting('languages', []);
+        settingsManager::getInstance()->registerSetting('languages', prismManager::getDefaultLanguages());
 
     //Pism's plugins
     //settingsManager::getInstance()->registerSetting('plugins', '');
